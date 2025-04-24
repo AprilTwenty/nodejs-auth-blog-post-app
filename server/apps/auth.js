@@ -12,7 +12,12 @@ export const authRouter = Router();
 const collection = db.collection("user");
 authRouter.post("/register", async (req, res) => {
     //2 access req and body
-    const user = {... req.body};
+    const user = {
+        "username": req.body.username,
+        "password": req.body.password,
+        "firstname": req.body.firstname,
+        "lastname": req.body.lastname 
+    };
     const salt = await bcrypt.genSalt(10);
     user.password = await bcrypt.hash(user.password, salt);
     //3 execute
@@ -34,7 +39,10 @@ authRouter.post("/register", async (req, res) => {
 //1
 authRouter.post("/login", async (req, res) => {
     //2 access body and req
-    const dataFromClient = {... req.body};
+    const dataFromClient = {
+        "username": req.body.username,
+        "password": req.body.password
+    };
     try {
     //3 execute
     //extra check username and password
