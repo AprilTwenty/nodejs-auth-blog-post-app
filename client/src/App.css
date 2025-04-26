@@ -210,6 +210,7 @@ form h1 {
 .form-actions {
   display: flex;
   justify-content: flex-end;
+  gap: 10px
 }
 
 /* general elements */

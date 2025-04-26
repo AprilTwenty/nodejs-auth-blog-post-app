@@ -15,8 +15,8 @@ authRouter.post("/register", async (req, res) => {
     const user = {
         "username": req.body.username,
         "password": req.body.password,
-        "firstname": req.body.firstname,
-        "lastname": req.body.lastname 
+        "firstName": req.body.firstName,
+        "lastName": req.body.lastName 
     };
     const salt = await bcrypt.genSalt(10);
     user.password = await bcrypt.hash(user.password, salt);
@@ -65,8 +65,8 @@ authRouter.post("/login", async (req, res) => {
     const token = jwt.sign(
         {
             "id": user._id,
-            "firstname": user.firstname,
-            "lastname": user.lastname
+            "firstName": user.firstName,
+            "lastName": user.lastName
         },
         process.env.SECRET_KEY,
         {
